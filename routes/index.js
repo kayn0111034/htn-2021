@@ -38,11 +38,10 @@ charactersLength));
 }
 
 
-const userID = makeid(5); // Unique ID used to track conversation state
-
-console.log(userID)
-
 router.post('/talk', function(req, res, next) {
+  const userID = makeid(5); // Unique ID used to track conversation state
+
+  console.log(userID)
   async function startInteract() {
     // Start a conversation
     t = req.body.t
