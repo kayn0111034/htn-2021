@@ -87,12 +87,14 @@ $(function () {
         if (msg.trim() == '') {
             return false;
         }
-        generate_message(msg, 'self');
+        const params = new URLSearchParams(window.location.search)
+        uid = params.get('uid')
+        generate_message(msg, 'self', uid);
         generate_message(msg, 'user');
 
     })
 
-    function generate_message(msg, type) {
+    function generate_message(msg, type, id) {
         INDEX++;
         var str = "";
         if (type == 'self') {
@@ -117,7 +119,8 @@ $(function () {
         } else {
             $.post('/talk', // url
                 {
-                    t: msg
+                    t: msg,
+                    uid: id
                 }, // data to be submit
                 function (data, status, jqXHR) { // success callback
                     data.forEach(element => {
