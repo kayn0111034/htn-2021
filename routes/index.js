@@ -39,10 +39,6 @@ const apiKey = 'VF.614627eb076dfd001b7ffbc9.0BNVQb9cCBQYjiZDMhPnU1o1notZzW29IwIO
 const versionID = '61461ab8d91e7f000678fbd2';
 
 
-
-var userID;
-
-
 router.get('/bot', function(req, res, next) {
   res.render('bot', { title: 'Express' });
 });
@@ -52,6 +48,8 @@ router.post('/talk', function(req, res, next) {
     // Start a conversation
     t = req.body.t
     uid = req.body.uid
+
+    console.log(t, uid)
 
     const body = {
       request: {

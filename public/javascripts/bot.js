@@ -1,8 +1,13 @@
+const params = new URLSearchParams(window.location.search)
+uid = params.get('uid')
+console.log(uid, params)
+
 $(document).ready(function () {
     $messages.mCustomScrollbar();
     $.post('/talk', // url
     {
-        t: "Begin"
+        t: "Begin",
+        uid: uid
     }, // data to be submit
 
     function (data, status, jqXHR) { // success callback
@@ -87,14 +92,12 @@ $(function () {
         if (msg.trim() == '') {
             return false;
         }
-        const params = new URLSearchParams(window.location.search)
-        uid = params.get('uid')
-        generate_message(msg, 'self', uid);
-        generate_message(msg, 'user');
+        generate_message(msg, 'self');
+        generate_message(msg, 'user', uid);
 
     })
 
-    function generate_message(msg, type, id) {
+    function generate_message(msg, type, uid) {
         INDEX++;
         var str = "";
         if (type == 'self') {
@@ -120,7 +123,7 @@ $(function () {
             $.post('/talk', // url
                 {
                     t: msg,
-                    uid: id
+                    uid: uid
                 }, // data to be submit
                 function (data, status, jqXHR) { // success callback
                     data.forEach(element => {
