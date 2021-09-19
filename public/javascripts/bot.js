@@ -64,6 +64,20 @@ $('.button').click(function () {
     $('.menu .button').toggleClass('active');
 });
 
+let f = 0;
+let width, height;
+
+function setup() {
+    createCanvas(displayWidth, displayHeight);
+    width = displayWidth
+    height = displayHeight
+}
+
+
+let currentScene = "General"
+let disappearScene = undefined
+let nextScene = "General"
+
 
 $(function () {
     var INDEX = 1;
@@ -116,6 +130,8 @@ $(function () {
                             str += element.payload.message;
                             str += "          <\/div>";
                             str += "        <\/div>";
+
+                            nextScene = element.payload.message
                         }
                         if (element.type == "end") {
                             str += "<div id='cm-msg-" + INDEX + "' class=\"chat-msg " + type + "\">";
@@ -123,7 +139,7 @@ $(function () {
                             str += "            <img src=\"/images/avatar.png\">";
                             str += "          <\/span>";
                             str += "          <div class=\"cm-msg-text\">";
-                            str += "Ingrid No Longer Loves You";
+                            str += "Goodbye";
                             str += "          <\/div>";
                             str += "        <\/div>";
                         }
@@ -163,21 +179,6 @@ $(function () {
 })
 
 // Stuff
-let f = 0;
-let width, height;
-
-function setup() {
-    createCanvas(displayWidth, displayHeight);
-    width = displayWidth
-    height = displayHeight
-}
-
-let command = window.prompt("What do you want to see?");
-
-let currentScene = command
-let disappearScene = undefined
-let nextScene = command
-
 /*
 function keyPressed() {
     nextScene = window.prompt("What do you want to see");

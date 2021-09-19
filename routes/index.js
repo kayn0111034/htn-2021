@@ -23,7 +23,7 @@ const axios = require('axios');
 
 // View our quick start guide to get your API key and version ID:
 // https://www.voiceflow.com/api/dialog-manager#section/Quick-Start
-const apiKey = '';
+const apiKey = 'VF.614627eb076dfd001b7ffbc9.0BNVQb9cCBQYjiZDMhPnU1o1notZzW29IwIO3pjg5X';
 const versionID = '61461ab8d91e7f000678fbd2';
 
 function makeid(length) {
