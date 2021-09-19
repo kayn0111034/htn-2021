@@ -15,9 +15,6 @@ router.get('/login', function(req, res, next) {
  * 
 */
 
-router.get('/bot', function(req, res, next) {
-  res.render('bot', { title: 'Express' });
-});
 
 const axios = require('axios');
 
@@ -37,11 +34,17 @@ charactersLength));
  return result;
 }
 
+var userID;
 
-router.post('/talk', function(req, res, next) {
-  const userID = makeid(5); // Unique ID used to track conversation state
+
+router.get('/bot', function(req, res, next) {
+  res.render('bot', { title: 'Express' });
+  userID = makeid(5); // Unique ID used to track conversation state
 
   console.log(userID)
+});
+
+router.post('/talk', function(req, res, next) {
   async function startInteract() {
     // Start a conversation
     t = req.body.t
